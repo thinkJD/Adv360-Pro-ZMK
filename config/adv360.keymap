@@ -41,7 +41,7 @@
         bindings = <
           &kp ESC   &kp DE_1     &kp DE_2     &kp DE_3      &kp DE_4         &kp DE_5 &tog 1                                                                       &mo 3       &kp DE_6 &kp DE_7           &kp DE_8      &kp DE_9       &kp DE_0    &kp DE_SS
           &kp TAB   &kp Q        &kp W        &kp E         &kp R            &kp T    &kp RG(LS(S))                                                                &none       &kp DE_Z &kp U              &kp I         &kp O          &kp P       &kp DE_UDIA
-          &kp BSPC  &kp A        &kp S        &kp D         &kp F            &kp G    &kp LS(LA(ESC))  &none     &none                &none     &none              &kp LA(ESC) &kp H    &kp J              &kp K         &kp L          &kp DE_ODIA &kp DE_ADIA
+          &kp BSPC  &kp A        &kp S        &kp D         &kp F            &kp G    &kp LS(LA(ESC))  &kp LCTRL &none                &none     &kp RCTRL          &kp LA(ESC) &kp H    &kp J              &kp K         &kp L          &kp DE_ODIA &kp DE_ADIA
           &kp LSHFT &kp DE_Y     &kp X        &kp C         &kp V            &kp B           &none     &none     &none &none &none    &kp PG_UP &none     &none                &kp N    &kp M              &kp COMMA     &kp DOT        &kp FSLH    &kp RSHFT
           &mo 2     &caps_word   &kp LEFT_GUI &kp LEFT_ALT  &kp LEFT_CONTROL                 &mo LOWER &kp ENTER &none                &kp PG_DN &kp SPACE &mo RAISE                     &kp RIGHT_CONTROL  &kp RIGHT_ALT &kp RIGHT_GUI  &none       &mo 2
         >;
