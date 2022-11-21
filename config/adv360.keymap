@@ -9,7 +9,8 @@
 #define DEFAULT 0
 #define LOWER   4
 #define RAISE   5
-#define ADJUST  6
+#define ADJUST  3  // Re-use of the original mod layer
+
 
 / {
     behaviors {
@@ -63,12 +64,12 @@
           &trans &trans &trans &trans &trans               &trans &trans &trans             &trans &trans &trans              &trans &trans &trans  &trans  &trans
         >;
       };
-      mod {
+      ADJUST {
         bindings = <
           &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                                          &trans                 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
           &none &none        &none        &none        &none        &none        &bootloader                                                                                                    &bootloader            &none        &none        &none        &none        &none        &none
-          &none &none        &none        &none        &none        &none        &rgb_ug RGB_MEFS_CMD 5                 &bt BT_CLR &bt BT_CLR             &bt BT_CLR &bt BT_CLR                 &rgb_ug RGB_MEFS_CMD 5 &none        &none        &none        &none        &none        &none
-          &none &none        &none        &none        &none        &none                               &none           &none      &none      &none &none &none      &none      &none                                  &none        &none        &none        &none        &none        &none
+          &none &none        &none        &none        &none        &none        &rgb_ug RGB_MEFS_CMD 5                 &bt BT_CLR &bt BT_CLR             &bt BT_CLR &bt BT_CLR                 &rgb_ug RGB_MEFS_CMD 5 &none        &none        &none        &kp C_MUTE   &none        &none
+          &none &none        &none        &none        &none        &none                               &none           &none      &none      &none &none &none      &none      &none                                  &none        &none        &kp C_PREV   &kp C_PP     &kp C_NEXT   &none
           &none &none        &none        &bl BL_INC   &bl BL_DEC                                       &rgb_ug RGB_TOG &bl BL_TOG &none                  &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none        &none        &none
         >;
       };
@@ -113,37 +114,6 @@
         >;
       };
 
-/*ADJUST
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      | KC_P7| KC_P8| KC_P9|RESET |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      | KC_P4| KC_P5| KC_P6|COLEMAK|                    |     | REC1 | RSTP | PLY1 |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      | KC_P1| KC_P2| KC_P3|QWERTY|-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
- * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * |      |      | KC_P0|      |      |MACWIN|-------|    |-------|      | PREV | PLAY | NEXT |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LGUI | LAlt | LCTR |LOWER | /Enter  /       \Space \  |RAISE | RCTR | RAlt | RGUI |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- *
-  [_ADJUST] = LAYOUT(
-  XXXXXXX, XXXXXXX, KC_7, KC_8, KC_9, RESET,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, KC_4, KC_5, KC_6, KC_COLEMAK,                     XXXXXXX, DM_REC1, DM_RSTP, DM_PLY1, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, KC_1, KC_2, KC_3, KC_QWERTY,                     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, KC_0, XXXXXXX, XXXXXXX, CG_TOGG, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-  )
-*/
-      ADJUST {
-        bindings = <
-          &kp ESC   &kp DE_1  &kp DE_2 &kp DE_3 &kp DE_4   &kp DE_5 &tog 1                                                                    &mo 3 &kp DE_6 &kp DE_7   &kp DE_8   &kp DE_9   &kp DE_0  &kp &none
-          &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T    &none                                                                     &none &kp DE_Z &kp U      &kp UP     &none      &kp P     &kp &none
-          &kp BSPC  &kp A     &kp S    &kp D    &kp F      &kp G    &none           &kp LCTRL &kp LALT             &kp LGUI  &kp RCTRL        &none &kp H    &none      &kp C_MUTE &none      &kp DEL   &kp BSPC
-          &kp LSHFT &kp DE_Y  &kp X    &kp C    &kp V      &kp B           &none    &none     &kp HOME &none &none &kp PG_UP &none     &none        &kp N    &kp C_PREV &kp C_PP   &kp C_NEXT &kp FSLH  &kp RSHFT
-          &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                  &trans   &trans    &trans               &kp PG_DN &trans    &trans                &kp UP     &kp DOWN   &kp LBKT   &kp RBKT  &mo 2
-        >;
-      };
     };
   };
   
