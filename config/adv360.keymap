@@ -23,8 +23,8 @@ Todo:
 // Shortcut definitions
 // Windows
 #define WLOCK LEFT_GUI(L)  // Lock Screen
-#define WPWIN LS(LA(ESC))  // Focus to previous window
-#define WNWIN LA(ESC)      // Focus to next window
+#define WNWIN LS(LA(ESC))  // Focus to previous window
+#define WPWIN LA(ESC)      // Focus to next window
 #define WTASK LC(LS(ESC))  // Task Manager
 #define WPSCR RG(LS(S))    // Screnshot using screenshot tool
 
@@ -61,7 +61,7 @@ Todo:
           &kp TAB   &kp Q        &kp W        &kp E         &kp R            &kp T    &kp WPSCR                                                                    &none       &kp DE_Z   &kp U     &kp I     &kp O    &kp P       &kp DE_UDIA
           &kp BSPC  &kp A        &kp S        &kp D         &kp F            &kp G    &kp WPWIN           &kp LCTRL &none             &none     &kp RCTRL          &kp WNWIN   &kp H      &kp J     &kp K     &kp L    &kp DE_ODIA &kp DE_ADIA
           &kp LSHFT &kp DE_Y     &kp X        &kp C         &kp V            &kp B              &none     &none     &none &none &none &kp PG_UP &none     &none                &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH    &kp RSHFT
-          &mo FN     &caps_word   &kp LEFT_GUI &kp LEFT_ALT  &kp LEFT_CONTROL                   &mo LOWER &kp ENTER &none             &kp PG_DN &kp SPACE &mo RAISE            &kp RCTRL  &kp RALT  &kp RGUI &none    &mo FN
+          &mo FN     &caps_word   &kp LEFT_GUI &kp LEFT_ALT  &kp LEFT_CONTROL                   &mo LOWER &kp ENTER &none             &kp BSPC  &kp SPACE &mo RAISE            &kp RCTRL  &kp RALT  &kp RGUI &none    &mo FN
         >;
       };
       LOWER {
@@ -86,8 +86,8 @@ Todo:
         bindings = <
           &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                                          &trans                 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
           &none &none        &none        &none        &none        &none        &bootloader                                                                                                    &bootloader            &none        &none        &none        &none        &none        &none
-          &none &none        &none        &none        &none        &none        &rgb_ug RGB_MEFS_CMD 5                 &bt BT_CLR &bt BT_CLR             &bt BT_CLR &bt BT_CLR                 &rgb_ug RGB_MEFS_CMD 5 &none        &none        &none        &kp C_MUTE   &none        &none
-          &none &none        &none        &none        &none        &none                               &none           &none      &none      &none &none &none      &none      &none                                  &none        &none        &kp C_PREV   &kp C_PP     &kp C_NEXT   &none
+          &none &none        &none        &none        &none        &none        &rgb_ug RGB_MEFS_CMD 5                 &bt BT_CLR &bt BT_CLR             &bt BT_CLR &bt BT_CLR                 &rgb_ug RGB_MEFS_CMD 5 &none        &none        &kp C_MUTE   &none        &none        &none
+          &none &none        &none        &none        &none        &none                               &none           &none      &none      &none &none &none      &none      &none                                  &none        &kp C_PREV   &kp C_PP     &kp C_NEXT   &none        &none
           &none &none        &none        &bl BL_INC   &bl BL_DEC                                       &rgb_ug RGB_TOG &bl BL_TOG &none                  &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none        &none        &none
         >;
       };
