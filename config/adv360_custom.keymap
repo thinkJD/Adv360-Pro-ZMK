@@ -21,6 +21,7 @@ Todo:
 #define ADJ     3
 #define KPAD    4
 #define FN      5
+#define MAC     6
 
 // Shortcut definitions
 // Windows
@@ -28,12 +29,31 @@ Todo:
 #define WNWIN LS(LA(ESC))  // Focus to previous window
 #define WPWIN LA(ESC)      // Focus to next window
 #define WTASK LC(LS(ESC))  // Task Manager
-#define WPSCR RG(LS(S))    // Screnshot using screenshot tool
+#define WPSCR RG(LS(S))    // Screenshot using screenshot tool
+
+// macOS
+#define MLOCK LC(LG(Q))    // Lock Screen
+#define MNWIN LG(LS(TAB))  // Focus to previous app (Cmd+Shift+Tab)
+#define MPWIN LG(TAB)      // Focus to next app (Cmd+Tab)
+#define MFORCE LG(LA(ESC)) // Force Quit (Cmd+Option+Esc)
+#define MPSCR LG(LS(N5))   // Screenshot tool (Cmd+Shift+5)
 
 / {
     behaviors {
       #include "macros.dtsi"
       #include "version.dtsi"
+
+      win_host: win_host {
+          compatible = "zmk,behavior-macro";
+          #binding-cells = <0>;
+          bindings = <&bt BT_SEL 0>, <&to DEFAULT>;
+      };
+
+      mac_host: mac_host {
+          compatible = "zmk,behavior-macro";
+          #binding-cells = <0>;
+          bindings = <&bt BT_SEL 1>, <&to MAC>;
+      };
 
       hm: homerow_mods {
           compatible = "zmk,behavior-hold-tap";
@@ -87,7 +107,7 @@ Todo:
       };
       ADJ {
         bindings = <
-          &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                                          &trans                 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
+          &none &win_host    &mac_host    &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                                          &trans                 &win_host    &mac_host    &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
           &none &none        &none        &none        &none        &none        &bootloader                                                                                                    &bootloader            &none        &none        &none        &none        &none        &none
           &none &none        &none        &none        &none        &none        &rgb_ug RGB_MEFS_CMD 5                 &bt BT_CLR &bt BT_CLR             &bt BT_CLR &bt BT_CLR                 &rgb_ug RGB_MEFS_CMD 5 &none        &none        &kp C_MUTE   &none        &none        &none
           &none &none        &none        &none        &macro_ver   &none                                            &none      &none                                                                  &none        &kp C_PREV   &kp C_PP     &kp C_NEXT   &none        &none
@@ -110,6 +130,15 @@ Todo:
           &trans &trans &trans &trans &trans &trans  &none        &trans &trans             &trans &trans        &none &trans &trans &trans &trans  &trans  &trans
           &trans &trans &trans &trans &trans &trans                      &trans &trans                     &trans &trans &trans &trans  &trans  &trans
           &trans &trans &trans &trans &trans               &trans &trans &trans             &trans &trans &trans              &trans &trans &trans  &trans  &trans
+        >;
+      };
+      MAC {
+        bindings = <
+          &kp ESC   &kp DE_1     &kp DE_2     &kp DE_3      &kp DE_4         &kp DE_5 &tog KPAD                                                                    &mo ADJ     &kp DE_6   &kp DE_7  &kp DE_8  &kp DE_9 &kp DE_0    &kp DE_SS
+          &kp TAB   &kp Q        &kp W        &kp E         &kp R            &kp T    &kp MPSCR                                                                    &none       &kp DE_Z   &kp U     &kp I     &kp O    &kp P       &kp DE_UDIA
+          &kp BSPC  &kp A        &kp S        &kp D         &kp F            &kp G    &kp MPWIN           &kp LCTRL &none             &none     &kp RCTRL          &kp MNWIN   &kp H      &kp J     &kp K     &kp L    &kp DE_ODIA &kp DE_ADIA
+          &kp LSHFT &kp DE_Y     &kp X        &kp C         &kp V            &kp B                                              &none      &kp PG_UP                                       &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH    &kp RSHFT
+          &mo FN     &caps_word   &kp LEFT_GUI &kp LEFT_ALT  &kp LEFT_CONTROL                   &mo LOWER &kp ENTER &none             &kp BSPC  &kp SPACE &mo RAISE            &kp RCTRL  &kp RALT  &kp RGUI &none    &mo FN
         >;
       };
     };
